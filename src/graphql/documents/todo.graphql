@@ -1,0 +1,36 @@
+fragment TodoFields on Todo {
+  id
+  title
+  completed
+}
+query GetTodoList {
+  getTodoList {
+    ...TodoFields
+  }
+}
+
+query GetTodo($getTodoId: ID) {
+  getTodo(id: $getTodoId) {
+    ...TodoFields
+  }
+}
+
+mutation CreateTodo($input: TodoCreateInput!) {
+  createTodo(input: $input) {
+    ...TodoFields
+  }
+}
+
+mutation DeleteTodo($id: ID!) {
+  deleteTodo(id: $id) {
+    ...TodoFields
+  }
+}
+
+mutation UpdateTodo($input: TodoUpdateInput!) {
+  updateTodo(input: $input) {
+    id
+    title
+    completed
+  }
+}
